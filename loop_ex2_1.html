@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <script>
+        
+        // var inputNum = Number(prompt("숫자 입력하세요 0은 종료"));
+        var count = -1;
+        var sum = 0;
+        inputNum = null;
+        while (inputNum != 0) {
+            inputNum = Number(prompt("숫자 입력하세요 0은 종료"));
+            count++;
+            sum += inputNum;
+        }
+        document.write("입력한 수들의 갯수: "+count+" 합 :"+sum);
+    </script>
+</body>
+</html>
