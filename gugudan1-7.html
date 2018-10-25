@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>구구단 8,9단</title>
+</head>
+<body>
+    <script>
+        var condition = true;
+        while(condition){
+            var i = Number(prompt("몇단 보여줄까요? 2~9단만"));
+            if(i<2 || i>9){
+                console.log("2단부터 9단까지만 하라니까");
+            }else {
+                condition = false;
+                console.log(i+"단");
+                for(var j=1; j<=9; j++) {
+                    console.log(i+" * "+j +" = " +i*j);
+                }
+            }
+        }
+        
+    </script>
+    
+</body>
+</html>
