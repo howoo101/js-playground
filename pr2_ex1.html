@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>소수 찾기</title>
+</head>
+<body>
+    <h1>소수 찾기</h1>
+    <script>
+        var userInput = Number(prompt("소수 판별해드림 2부터 가능"));
+        var isPrime = true;
+        for(var i = 2; i<= userInput/2; i++) {
+            if(userInput%i ==0) {
+                isPrime = false;
+                break;
+            }
+        }
+        if(isPrime) {
+            document.write(userInput+"은(는) 소수입니다.");
+        }else {
+            document.write(userInput+"은(는) 소수가 아닙니다.")
+        }
+    
+        
+    </script>
+</body>
+</html>
