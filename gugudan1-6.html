@@ -7,12 +7,18 @@
     <title>구구단 4,5단</title>
 </head>
 <body>
+    <input type="text" id="num"> 
+    <button onclick="showGugudan()">확인</button>
     <script>
-        var i = Number(prompt("몇단 보여줄까요?"));
-        document.write("<h1>"+i+"단 </h1>");
-        for(var j =1; j<=9; j++) {
-            document.write(i+" * "+j+" = "+i*j+"<br>");
+        function showGugudan(){
+            var i = document.getElementById("num").value;
+            document.write("<h1>"+i+"단 </h1>");
+            for(var j =1; j<=9; j++) {
+                document.write(i+" * "+j+" = "+i*j+"<br>");
+            }
         }
+        // var i = Number(prompt("몇단 보여줄까요?"));
+        
     </script>
     
 </body>
