@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>gugudan</title>
+</head>
+<body>
+    <h1>구구단 출력</h1>
+    <script>
+        for(var j = 2; j < 10; j++){
+            document.write("<h2>"+j+"단</h2>")
+            var results = [];
+            for(var i = 1; i <= 9; i++){
+                results.push(i*j);
+                document.write("<h3>"+j+" X "+i+" = "+results[i-1]+"</h3>");
+            }
+        }
+        
+    </script>
+</body>
+</html>
