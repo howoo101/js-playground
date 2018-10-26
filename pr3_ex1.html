@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function</title>
+</head>
+<body>
+    <h1>1부터 10000까지 소수 구하기</h1>
+    <script>
+        // 1부터 10000까지 소수 구하기
+        var prime = {
+            "maxNum" : 10000,
+            "primeArr" :[],
+            "isPrime" : function(num) {
+                var prime1 = true;
+                if(num === 1) {
+                    prime1 = false;
+                }
+                for(var i=2; i<= num/2; i++){
+                    if(num%i==0) {
+                        prime1 = false;
+                        break;
+                    }
+                }  
+                return prime1;
+            },
+            "getAllPrime" : function() {
+                this.addPrime();
+                var str = "<h2>전체 소수 갯수 : " +this.primeArr.length+"</h2>";
+                for(var i = 0; i<this.primeArr.length; i++){
+                    str += "<h2>"+ (i+1) + "번째 소수 :"+ this.primeArr[i]+"</h2>"
+                }
+                return str;   
+            },
+            "addPrime" : function() {
+                for(var i=1; i <= this.maxNum; i++){
+                    if(this.isPrime(i)) {
+                        this.primeArr.push(i);
+                    }
+                }
+            }
+        }
+        var result = prime.getAllPrime();
+        document.write(result);
+        
+    </script>
+</body>
+</html>
