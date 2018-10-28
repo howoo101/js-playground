@@ -7,26 +7,30 @@
     <title>function</title>
 </head>
 <body>
+    예제
     <ul>
         <li>Food(name, energy) 생성자를 만들어 봅시다</li>
         <li>eat(food) 메소드를 Human() 생성자 안에 추가해 봅시다.</li>
         <li>도너츠 객체를 생성해서 휴먼 객체에게 먹여 봅시다.</li>
     </ul>
-    
+    <hr>
+    <h2>생성자 안에 메서드를 정의하는 것은 효율적이지 못하다</h2>
+    <h2>프로토타입으로 만드는게 좋음</h2>
+    <h2>생성자로 객체를 만들면 프로토타입이라는 속성이 있다고 일단 알아두자</h2>
     <script>
         var Human = function(name,hp,power) {
             this.name = name;
             this.hp = hp;
             this.power = power;
-            this.attack = function(target) {
+        }
+        Human.prototype.attack = function(target) {
                 target.hp -= this.power;
-            }
-            this.eat = function(food) {
+        }
+        Human.prototype.eat = function(food) {
                 this.hp += food.energy;
-            }
-            this.show = function() {
-                console.log(this.name,this.hp)
-            }
+        }
+        Human.prototype.show = function() {
+            console.log(this.name, this.hp);
         }
         var Food = function(name,energy) {
             this.name = name;
