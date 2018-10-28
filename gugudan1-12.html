@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var inputStr = prompt("숫자 2개 입력 ,로 구분");
+        inputStr = inputStr.split(",");
+        var dan = Number(inputStr[0]);
+        var gob = Number(inputStr[1]);
+        for(var i = 2; i <= dan; i++){
+            for(var j = 1; j <= gob; j++){
+                document.write("<h2>"+i+" * "+j+" = "+ i*j+"</h2>");
+            }
+        }
+    </script>
+</body>
+</html>
