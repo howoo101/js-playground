@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>function</title>
+</head>
+<body>
+    <ul>
+        <li>Food(name, energy) 생성자를 만들어 봅시다</li>
+        <li>eat(food) 메소드를 Human() 생성자 안에 추가해 봅시다.</li>
+        <li>도너츠 객체를 생성해서 휴먼 객체에게 먹여 봅시다.</li>
+    </ul>
+    
+    <script>
+        var Human = function(name,hp,power) {
+            this.name = name;
+            this.hp = hp;
+            this.power = power;
+            this.attack = function(target) {
+                target.hp -= this.power;
+            }
+            this.eat = function(food) {
+                this.hp += food.energy;
+            }
+            this.show = function() {
+                console.log(this.name,this.hp)
+            }
+        }
+        var Food = function(name,energy) {
+            this.name = name;
+            this.energy = energy;
+        }
+        var p1 = new Human("mino",999,10);
+        var donut = new Food("donut",1);
+        p1.eat(donut);
+        p1.show();
+    </script>
+</body>
+</html>
