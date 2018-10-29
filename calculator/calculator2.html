@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>calculator</title>
+</head>
+<body>
+    <h1>사용자로 2개의 값 입력받아 사칙연산 결과 출력</h1>
+    <h2>,로 구분해서 입력하세요</h2>
+    <input type="text" id = "input">
+    <button id = "btn" onclick = "calc()">입력</button>
+    <script>
+        var calc = function() {
+            var input = document.getElementById("input").value;
+            var num = input.split(",");
+            document.write("<h2> "+num[0]+" + " +num[1]+  " = "+(Number(num[0])+Number(num[1]))+"</h2>");
+            document.write("<h2> "+num[0]+" - " +num[1]+  " = "+(num[0]-num[1])+"</h2>");
+            document.write("<h2> "+num[0]+" * " +num[1]+  " = "+(num[0]*num[1])+"</h2>");
+            document.write("<h2> "+num[0]+" / " +num[1]+  " = "+(num[0]/num[1])+"</h2>");
+        }
+        
+    </script>
+</body>
+</html>
