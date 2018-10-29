@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>계산기</title>
+</head>
+<body>
+    <h1>처음 만든 계산기</h1>
+    
+    <h2 id = "result"></h2>
+    <script>
+        var calc = {
+            "a" : [],
+            "b" : [],
+            "plus" : function(a,b) {
+                return a+b;
+            },
+            "minus" : function(a,b) {
+                return a-b;
+            },
+            "div" : function(a,b) {
+                return a/b;
+            },
+            "mul" : function(a,b) {
+                return a*b;
+            },
+            "input" : function() {
+                var str = prompt("계산식 입력");
+                list = str.split("");
+                // console.log(str)
+                for(var i = 0; i<str.length; i++){
+                    // console.log("str",i,str[i])
+                    if(i%2 === 0) {
+                        this.a.push(Number(str[i]))
+                    }else {
+                        this.b.push(str[i])
+                    }
+                }
+                // console.log(this.a,this.b);
+            },
+            "calc" :function(a) {
+                var func = null;
+                switch(a) {
+                    case "+":
+                    func = this.plus;
+                    break;
+                    case "-":
+                    func = this.minus;
+                    break;
+                    case "/":
+                    func = this.div;
+                    break;
+                    case "*":
+                    func = this.mul;
+                    break;
+                    
+                }
+                return func;
+            },
+            "main" : function() {
+                this.input();
+                var length = this.a.length;
+                for (var i =0; i<length-1; i++) {
+                   var res = this.calc(this.b[i]);
+                    this.a[i+1] = res(this.a[i],this.a[i+1]);
+                }
+                console.log(this.a[length-1]);
+                return this.a[length-1]
+            }
+        }
+        var result = calc.main();
+        document.getElementById("result").innerHTML = "결과 : " + result;
+    </script>
+</body>
+</html>
