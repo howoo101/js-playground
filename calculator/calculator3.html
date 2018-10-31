@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>계산기</title>
+</head>
+<body>
+    <h1>조건문을 이용한 계산기</h1>
+    <p>숫자 2개 부호 1개</p>
+    첫번째 숫자 : <input type="text" id="input1"/><br/>
+    두번째 숫자 : <input type="text" id="input2"/><br/>
+    부호 : <input type="text" id="input3"/><br/>
+    <button onclick="calc()" id="btn">제출</button>
+    <h2>결과</h2>
+    <div id="result"></div>  
+    <script>
+        
+        var calc = function() {
+            var n1 = Number(document.getElementById('input1').value);
+            var n2 = Number(document.getElementById('input2').value);
+            var op = document.getElementById('input3').value;
+            console.log(n1,n2,op)
+            var result = 0
+            switch(op) {
+                case "+" : 
+                    result = n1+n2; 
+                    break;
+                case "-" : 
+                    result = n1-n2;
+                    break;
+                case "*" : 
+                    result = n1*n2; 
+                    break;
+                case "/" : 
+                    result = n1/n2; 
+                    break;
+            }
+            document.getElementById("result").innerHTML = result;
+            document.getElementById("input1").value = "";
+            document.getElementById("input2").value = "";
+            document.getElementById("input3").value = "";
+        }
+        
+        </script>
+</body>
+</html>
