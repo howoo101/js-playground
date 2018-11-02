@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>계산기</title>
+</head>
+<body>
+    <h1>배열을 이용한 한줄로 처리하는 계산기</h1>
+    <p>공백으로 구분해서 입력하세요</p>
+    <input type="text" id="input"><br>
+    <button onclick="calc()">계산</button>
+    <h2>결과</h2>
+    <div id="out"></div>
+    <script>
+        input = {}
+        input.init = function() {
+            var str = document.getElementById("input").value;
+            this.inputArr = str.split(" ");
+        }
+        input.isEmpty = function() {
+            return this.inputArr.length === 0;
+        } 
+        input.getNum = function() {
+            return Number(this.inputArr.shift());
+        }
+        input.getOperator = function() {
+            var op = this.inputArr.shift();
+            if(op === "+" || op === "-" || op === "*" || op === "/") {
+                return op;
+            }else {
+                return NaN;
+            } 
+        }
+        calculator = {}
+        calculator.calculate = function(op,result,n2) {
+            switch(op) {
+            case "+" : 
+                result += n2; 
+                break;
+            case "-" : 
+                result -= n2;
+                break;
+            case "*" : 
+                result *= n2; 
+                break;
+            case "/" : 
+                result /= n2; 
+                break;
+            default:
+                result = "사칙연산만 입력해주세용";
+                break;
+            }
+            return result;
+        }
+        output = {}
+        output.print = function(result) {
+            var out = document.getElementById("out");
+            out.innerHTML = result;
+        }
+        
+        function calc() {
+            input.init();
+            var list = input.inputArr;
+            var result = input.getNum();
+            while(!input.isEmpty()) {
+                var op = input.getOperator();
+                var n2 = input.getNum();
+                result = calculator.calculate(op,result,n2);
+            }
+            output.print(result);
+        }
+    </script>
+</body>
+</html>
