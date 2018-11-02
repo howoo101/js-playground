@@ -1,9 +1,45 @@
+var input = {'array': []}
+input.getInput = function() {
+    return this.array.join("");
+};
+
+var output = {};
+output.text = document.getElementById('output');
+
 var clickNumbers = function(e) {
-    console.log("click number");
     console.log(e.target.innerHTML);
+    var str = e.target.innerHTML;
+    
+    switch (str) {
+        case 'BS':
+        input.array.pop();
+        break;
+        case '+':
+        input.array.push(' ' + str + ' ');
+        break;
+        case '-':
+        input.array.push(' ' + str + ' ');
+        break;
+        case '/':
+        input.array.push(' ' + str + ' ');
+        break;
+        case '*':
+        input.array.push(' ' + str + ' ');
+        break;
+        default:
+        input.array.push(str);
+    
+    }
+    
+    if(input.array.length === 0) {
+        output.text.innerHTML = "Empty";
+    }else {
+        output.text.innerHTML = input.getInput();
+    }
+    
 }
 
-var clickOthers = function(e) {
+var showResult = function(e) {
     console.log("click other");
     console.log(e.target.innerHTML);
 }
