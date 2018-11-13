@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="result"></div>
+    <button onclick = "func1()">0~10사이의 정수 뽑기</button>
+    <button onclick = "func2()">1~10사이의 정수 뽑기</button>
+    <button onclick = "func3()">-5~5사이의 정수 뽑기</button>
+    <button onclick = "func4()">1~10사이의 짝수 뽑기</button>
+    <script>
+        var func1 = function() {
+            document.getElementById("result").innerHTML = Math.floor(Math.random()*11)
+        }
+        var func2 = function() {
+            document.getElementById("result").innerHTML = Math.floor(Math.random()*10)+1
+        }
+        var func3 = function() {
+            document.getElementById("result").innerHTML = Math.floor(Math.random()*11)-5
+        }
+        var func4 = function() {
+            do {
+                var even = Math.floor(Math.random()*10)+1
+                if(even %2 === 0) {
+                    document.getElementById("result").innerHTML = even;    
+                    break;
+                }
+            }while(even %2 !== 0)
+            
+             
+        }
+    </script>
+</body>
+</html>
