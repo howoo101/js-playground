@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>recursion</h1>
+    <script>
+        var rsum = function(a,b) {
+            if (a>b) {
+                return NaN;
+            }else if(a === b) {
+                return b;
+            }
+            return a + rsum(a+1,b);
+        }
+        console.log(rsum(1,1) === 1);
+        console.log(rsum(1,3) === 6);
+        console.log(rsum(2,4) === 9);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>recursion</h1>
+    <script>
+        // 재귀의 문제점 다시호출되는 모든 함수를 다시 계산함
+    var fibo = function(n) {
+        if(n === 0) {
+            return 0;
+        }else if (n === 1) {
+            return 1;
+        }else {
+            return fibo(n-1) + fibo(n-2);
+        }
+    }
+
+        // 다이나믹 프로그래밍 기법
+    var arr = [0,1];
+    var fibo_d = function(n) {
+        if(arr[n] === undefined) {
+            arr[n] = fibo_d(n-1) + fibo_d(n-2);
+        }
+        return arr[n];
+    }
+    </script>
+</body>
+</html>

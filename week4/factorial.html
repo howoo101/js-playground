@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>recursion</h1>
+    <h2>재귀를 왜 사용하나?</h2>
+    <ul>
+        <li>재귀를 사용하면 쉽게 풀리는 문제가 많아짐</li>
+        <li>알고리즘의 리스트, 트리, 그래프 순회 문제는 재귀로 푸는 게 편함</li>
+    </ul>
+    <h2>재귀 vs 일반</h2>
+    <ul>
+        <li>일반 함수가 재귀 함수보다 높은 성능을 보임</li>
+        <li>모든 재귀는 일반으로 바꿀 수 있음</li>
+    </ul>
+    <script>
+        var fact = function(n) {
+            if(n === 1) {
+                return 1;
+            }
+            return n * fact(n-1);
+        }
+        console.log(fact(1) === 1);
+        console.log(fact(2) === 2);
+        console.log(fact(3) === 6);
+        console.log(fact(4) === 24);
+
+    </script>
+</body>
+</html>
