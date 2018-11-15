@@ -19,60 +19,13 @@
         <div id="word2"></div>
         <div id="btns">
             <button onclick="swap(event)">뒤집기</button>
-            <button onclick="shift(event)">밀어내기</button>
+            <button onclick="rshift(event)">오른쪽으로 밀어내기</button>
+            <button onclick="lshift(event)">왼쪽으로 밀어내기</button>
         </div>
         <p id="check">일치합니다.</p>
     </div>
 
 
-    <script>
-        var str = document.getElementById('word1').innerHTML;
-        var word2 = document.getElementById('word2');
-            
-        for (var i = 0; i < str.length; i++) {
-            var btn = document.createElement('button');
-            btn.innerHTML = str[i];
-            word2.appendChild(btn);
-        }
-        var check = function() {
-            var btn = document.getElementsByTagName('button');
-            var arr = [];
-            for(var i = 0; i < str.length; i++) {
-                arr.push(btn[i].innerHTML);
-            }
-            console.log(typeof(arr.join("")));
-            if(str === arr.join("")) {
-                document.getElementById('check').innerHTML = "일치합니다."
-            }else {
-                document.getElementById('check').innerHTML = "불일치합니다."
-            }
-        }
-        var swap = function() {
-            // console.log(swap);
-            var btn = document.getElementsByTagName('button');
-            for(var i = 0; i < (str.length-1)/2; i++) {
-                var temp = btn[i].innerHTML
-                btn[i].innerHTML = btn[str.length-1-i].innerHTML;
-                btn[str.length-1-i].innerHTML = temp;
-            }
-            check();
-        }
-        var shift = function() {
-            // console.log(shift);
-            var btn = document.getElementsByTagName('button');
-            for(var i = str.length-1; i>=0; i--) {
-                if (i === str.length-1) {
-                    var temp = btn[i].innerHTML;
-                }
-
-                if(i !== 0) {
-                    btn[i].innerHTML = btn[i-1].innerHTML;
-                } else {
-                    btn[i].innerHTML = temp;
-                }
-            }
-            check();
-        }
-    </script>
+    <script src="js/word.js"></script>
 </body>
 </html>
