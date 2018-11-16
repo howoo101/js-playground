@@ -1,43 +1,32 @@
-var words = ['apple','banana','car','door','emmit','fake','grooming','hire','icecream'];
-var answer = "";
-var str = document.getElementById('word1').innerHTML;
-str = initWord();
+var word1 = document.getElementById('word1');
 var word2 = document.getElementById('word2');
+var check = document.getElementById('check');
+var words = ['apple','banana','car','door','emmit','fake','grooming','hire','icecream'];
 
-function initWord() {
-    var n = Math.floor(Math.random()*9);
-    answer = words[n];
-    console.log(words[n])
-    var word = words[n].split('');
-    console.log(word.length);
-    var shuffle = [];
-    for(var i = 0; i<word.length; i++) {
-        while(true) {            
-            var n2 = Math.floor(Math.random()*word.length);
-            if(word[n2] !== '') {
-                shuffle.push(word[n2]);
-                word[n2] = '';
-                break;
-            }
-        }
-    }
-    return shuffle.join("");
-}
 
 var game = {};
-game.word = str.split('');
+game.choice = function() {
+    var idx = Math.floor(Math.random() * words.length);
+    return words[idx];
+}
+var answer = game.choice();
+word1.innerHTML = answer;
+console.log(answer); 
+
+game.word = answer.split('');
 game.btns = [];
+
 game.check = function() {
-    if(game.word.join("") === answer) {
-        document.getElementById('check').innerHTML = "일치합니다"
+    if(answer === game.word.join('')) {
+        check.innerHTML = "일치합니다"
     } else {
-        document.getElementById('check').innerHTML = "불일치합니다"
+        check.innerHTML = "불일치합니다"
     }
 }
 game.check();
-for (var i = 0; i < str.length; i++) {
+for (var i = 0; i < answer.length; i++) {
     var btn = document.createElement('button');
-    btn.innerHTML = str[i];
+    btn.innerHTML = answer[i];
     word2.appendChild(btn);
     game.btns.push(btn);
 }
@@ -68,4 +57,17 @@ var lshift = function(e) {
     game.word.push(s);
     game.btnCopy();
     game.check();
+}
+
+//shuffle 부분
+
+var toggle = Math.floor(Math.random() * 2) === 0;
+
+if(toggle) {
+    swap();
+}
+
+var n = Math.random()*answer.length;
+for(var i = 0; i < n; i++) {
+    rshift();
 }
