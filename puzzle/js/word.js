@@ -1,10 +1,12 @@
 var words = ['apple','banana','car','door','emmit','fake','grooming','hire','icecream'];
+var answer = "";
 var str = document.getElementById('word1').innerHTML;
 str = initWord();
 var word2 = document.getElementById('word2');
 
 function initWord() {
     var n = Math.floor(Math.random()*9);
+    answer = words[n];
     console.log(words[n])
     var word = words[n].split('');
     console.log(word.length);
@@ -26,12 +28,13 @@ var game = {};
 game.word = str.split('');
 game.btns = [];
 game.check = function() {
-    if(game.word.join("") === str) {
+    if(game.word.join("") === answer) {
         document.getElementById('check').innerHTML = "일치합니다"
     } else {
         document.getElementById('check').innerHTML = "불일치합니다"
     }
 }
+game.check();
 for (var i = 0; i < str.length; i++) {
     var btn = document.createElement('button');
     btn.innerHTML = str[i];
