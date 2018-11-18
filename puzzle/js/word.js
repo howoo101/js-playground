@@ -1,62 +1,68 @@
-var word1 = document.getElementById('word1');
-var word2 = document.getElementById('word2');
-var check = document.getElementById('check');
-var words = ['apple','banana','car','door','emmit','fake','grooming','hire','icecream'];
+//html Element
+var word1 = document.getElementById('word1'); //answer
+var word2 = document.getElementById('word2'); //buttons
+var check = document.getElementById('check'); //word1 === word2?
 
+var game = {'btns':[]};
+game.words = ['apple','banana','car','door','emmit','fake','grooming','hire','icecream'];
 
-var game = {};
-game.choice = function() {
-    var idx = Math.floor(Math.random() * words.length);
-    return words[idx];
+game.choose = function() {
+    var idx = Math.floor(Math.random() * this.words.length);
+    this.answer =  this.words[idx];
+    this.letters = this.answer.split('');
+    word1.innerHTML = this.answer;
 }
-var answer = game.choice();
-word1.innerHTML = answer;
-console.log(answer); 
-
-game.word = answer.split('');
-game.btns = [];
-
-game.check = function() {
-    if(answer === game.word.join('')) {
+game.addButtons = function() {
+    for (var i = 0; i < this.answer.length; i++) {
+        var btn = document.createElement('button');
+        btn.innerHTML = this.answer[i];
+        word2.appendChild(btn);
+        this.btns.push(btn);
+    }
+}
+game.updateDisplay = function() {
+    var gameStr = this.letters.join('');
+    if(this.answer === gameStr) {
         check.innerHTML = "일치합니다"
     } else {
         check.innerHTML = "불일치합니다"
     }
 }
-game.check();
-for (var i = 0; i < answer.length; i++) {
-    var btn = document.createElement('button');
-    btn.innerHTML = answer[i];
-    word2.appendChild(btn);
-    game.btns.push(btn);
+game.init = function() {
+    this.choose();
+    this.addButtons();
+    this.updateDisplay();
 }
-var swap = function(event) {
-    for(var i = 0; i < (game.word.length-1)/2; i++) {
-        var temp = game.word[i];
-        game.word[i] = game.word[game.word.length-1-i];
-        game.word[game.word.length-1-i] = temp;
+game.init();
+game.copyBtnText = function() {
+    for(var i = 0; i<this.letters.length; i++) {
+        this.btns[i].innerHTML = this.letters[i];
     }
-    game.btnCopy();
-    game.check();
 }
 
-game.btnCopy = function() {
-    for(var i = 0; i<this.word.length; i++) {
-        this.btns[i].innerHTML = this.word[i];
+
+var swap = function() {
+    for(var i = 0; i < (game.letters.length)/2; i++) {
+        var temp = game.letters[i];
+        game.letters[i] = game.letters[game.letters.length-1-i];
+        game.letters[game.letters.length-1-i] = temp;
     }
+    game.copyBtnText();
+    game.updateDisplay();
 }
-var rshift = function(event) {
-    var s = game.word.pop();
-    game.word.unshift(s);
-    game.btnCopy();
-    game.check();
+
+var rshift = function() {
+    var s = game.letters.pop();
+    game.letters.unshift(s);
+    game.copyBtnText();
+    game.updateDisplay();
     
 }
-var lshift = function(e) {
-    var s = game.word.shift();
-    game.word.push(s);
-    game.btnCopy();
-    game.check();
+var lshift = function() {
+    var s = game.letters.shift();
+    game.letters.push(s);
+    game.copyBtnText();
+    game.updateDisplay();
 }
 
 //shuffle 부분
@@ -67,7 +73,7 @@ if(toggle) {
     swap();
 }
 
-var n = Math.random()*answer.length;
+var n = Math.random()*(game.answer).length;
 for(var i = 0; i < n; i++) {
     rshift();
 }
