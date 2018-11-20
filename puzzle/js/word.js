@@ -29,6 +29,7 @@ game.removeButtons = function() {
     for (var i = 0; i < this.btns.length; i++) {
         word2.removeChild(this.btns[i]);
     }
+    this.btns = []
 };
 game.isCorrect = function() {
     return this.answer === this.letters.join('');
@@ -78,7 +79,7 @@ game.progress = function() {
         this.current++;
         this.removeButtons();
         this.init();
-        this.swap();
+        this.shuffle();
         var str="";
         for(var i = 0; i<this.current; i++) {
             str += "O";
@@ -109,12 +110,12 @@ game.shuffle = function() {
     var toggle = Math.floor(Math.random() * 2) === 0;
 
     if(toggle) {
-        swap();
+        this.swap();
     }
 
     var n = Math.random()*((game.answer).length-1)+1;
     for(var i = 0; i < n; i++) {
-        rshift();
+        this.rshift();
     }
 };
 game.shuffle();
